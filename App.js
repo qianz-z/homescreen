@@ -44,7 +44,7 @@ function RecipefeedScreen({ navigation }) {
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text onPress={() => navigation.navigate("Hawkerfeed")}>Tap to go to Hawkerfeed</Text>
+            <Text style={{top:50, zIndex:100, backgroundColor:"transparent", position:"absolute"}} onPress={() => navigation.navigate("Hawkerfeed")}>Tap to go to Hawkerfeed</Text>
             <FlatList
                 data={vids}
                 renderItem={renderItem}
@@ -60,7 +60,7 @@ function HawkerfeedScreen({ navigation }) {
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text onPress={() => navigation.navigate("Recipefeed")}>Tap to go to Recipefeed</Text>
+            <Text style={{top:50, zIndex:100, backgroundColor:"transparent", position:"absolute"}} onPress={() => navigation.navigate("Recipefeed")}>Tap to go to Recipefeed</Text>
             <Text>Hawkerfeed Page</Text>
         </SafeAreaView>
     )
