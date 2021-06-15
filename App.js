@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
-import { FlatList, StyleSheet, Text, View, Image, Alert, Dimensions, TouchableOpacity, Button } from "react-native";
+import { FlatList, StyleSheet, Text, View, Image, Alert, Dimensions, TouchableOpacity, Button, SafeAreaView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Swipeable from "react-native-gesture-handler/Swipeable";
@@ -43,20 +43,16 @@ function RecipefeedScreen({ navigation }) {
     }
 
     return (
-        <View style={styles.container}>
-            <TouchableOpacity style={styles.filter} onPress={() => navigation.navigate("Hawkerfeed")}>
-                <Text>Tap to go to Hawkerfeed</Text>
-            </TouchableOpacity>
-            <Swipeable renderLeftActions={leftswipe}>
-                <FlatList
-                    data={vids}
-                    renderItem={renderItem}
-                    snapToAlignment={'top'}
-                    snapToInterval={Dimensions.get('screen').height}
-                    pagingEnabled={true}
-                    decelerationRate={'fast'} />
-            </Swipeable>
-        </View>
+        <SafeAreaView style={styles.container}>
+                <Text onPress={() => navigation.navigate("Hawkerfeed")}>Tap to go to Hawkerfeed</Text>
+            <FlatList
+                data={vids}
+                renderItem={renderItem}
+                snapToAlignment={'top'}
+                snapToInterval={Dimensions.get('screen').height}
+                pagingEnabled={true}
+                decelerationRate={'fast'} />
+        </SafeAreaView>
     )
 }
 
