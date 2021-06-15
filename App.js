@@ -51,7 +51,8 @@ function RecipefeedScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{ top: 50, zIndex: 100, backgroundColor: "transparent", position: "absolute" }} onPress={() => navigation.navigate("Hawkerfeed")}>Tap to go to Hawkerfeed</Text>
+      <Text style={{ left: 130, top: 50, zIndex: 100, backgroundColor: "transparent", fontSize: 20, position: "absolute", color: 'blue', fontWeight: 'bold' }} >Recipe</Text>
+      <Text style={{ left: 200, top: 50, zIndex: 100, backgroundColor: "transparent", fontSize: 20, position: "absolute", color: 'white' }} onPress={() => navigation.navigate("Hawkerfeed")}>Hawker</Text>
       <FlatList
         data={vids}
         renderItem={renderItem}
@@ -93,7 +94,8 @@ function HawkerfeedScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{ top: 50, zIndex: 100, backgroundColor: "transparent", position: "absolute" }} onPress={() => navigation.navigate("Recipefeed")}>Tap to go to Recipefeed</Text>
+      <Text style={{ left: 130, top: 50, zIndex: 100, backgroundColor: "transparent", fontSize: 20, position: "absolute", color: 'white', }} onPress={() => navigation.navigate("Recipefeed")}>Recipe</Text>
+      <Text style={{ left: 200, top: 50, zIndex: 100, backgroundColor: "transparent", fontSize: 20, position: "absolute", color: 'blue', fontWeight: 'bold' }} onPress={() => navigation.navigate("Recipefeed")}>Hawker</Text>
       <FlatList
         data={vids}
         renderItem={renderItem}
@@ -157,5 +159,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: 60,
     width: 60,
+    color: 'white',
   }
 });
