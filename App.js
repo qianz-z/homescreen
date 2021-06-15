@@ -15,9 +15,6 @@ function RecipeScreen() {
 
 
 function RecipefeedScreen({ navigation }) {
-    <TouchableOpacity style={styles.filter} onPress={() => navigation.navigate("Hawkerfeed")}>
-        <Text>Tap to go to Hawkerfeed</Text>
-    </TouchableOpacity>
 
     const [vids, newvids] = useState([
         { key: '1', uri: 'https://miro.medium.com/max/1838/0*bX1mygYPmp4pyypU.png' },
@@ -47,6 +44,9 @@ function RecipefeedScreen({ navigation }) {
 
     return (
         <View style={styles.container}>
+            <TouchableOpacity style={styles.filter} onPress={() => navigation.navigate("Hawkerfeed")}>
+                <Text>Tap to go to Hawkerfeed</Text>
+            </TouchableOpacity>
             <Swipeable renderLeftActions={leftswipe}>
                 <FlatList
                     data={vids}
@@ -156,11 +156,10 @@ const styles = StyleSheet.create({
         flex: 1
     },
     filter: {
-        backgroundColor: '#00000000',
+        backgroundColor: 'transparent',
         alignItems: "center",
         justifyContent: "center",
         height: 60,
         width: 60,
-        opacity: 0.5,
     }
 });
