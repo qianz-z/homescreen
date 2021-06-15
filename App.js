@@ -13,6 +13,13 @@ function RecipeScreen() {
   )
 }
 
+function HawkerScreen() {
+  return (
+    <View style={styles.container}>
+      <Text>Hawker Page</Text>
+    </View>
+  )
+}
 
 function RecipefeedScreen({ navigation }) {
 
@@ -58,7 +65,7 @@ function RecipefeedScreen({ navigation }) {
 
 function HawkerfeedScreen({ navigation }) {
 
-  const [vids1, newvids1] = useState([
+  const [vids, newvids] = useState([
     { key: '1', uri: 'https://miro.medium.com/max/1838/0*bX1mygYPmp4pyypU.png' },
     { key: '2', uri: 'https://images-na.ssl-images-amazon.com/images/S/sgp-catalog-images/region_US/turner-36_s1-Full-Image_GalleryBackground-en-US-1557356293721._SX1080_.jpg' },
     { key: '3', uri: 'https://fsa.zobj.net/crop.php?r=7_BFbnFYGNjozHjg-1LKtqqVvd38zFtetigXUN0Au353kpdYkBDh2SHIpQ_FrU2ABBE86NMHtxFwP1t2WGyT_68HOjUQx9vgF-060ZwpUPm90jY1wPRDEY9Bb6ByVVsIqiPMZPHxKklqO1E3' }
@@ -86,72 +93,39 @@ function HawkerfeedScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.filter} onPress={() => navigation.navigate("Recipefeed")}>Tap to go to Recipefeed</Text>
-      <Text>Hawkerfeed Page</Text>
+      <Text style={{ top: 50, zIndex: 100, backgroundColor: "transparent", position: "absolute" }} onPress={() => navigation.navigate("Recipefeed")}>Tap to go to Recipefeed</Text>
+      <FlatList
+        data={vids}
+        renderItem={renderItem}
+        snapToAlignment={'top'}
+        snapToInterval={Dimensions.get('screen').height}
+        pagingEnabled={true}
+        decelerationRate={'fast'} />
     </SafeAreaView>
   )
-
-
 }
 
-function HawkerfeedstackScreen() {
-  const Hawkerfeedstack = createStackNavigator();
-  return (
-    <Hawkerfeedstack.Navigator>
-      <Hawkerfeedstack.Screen
-        name="Hawkerfeed"
-        component={HawkerfeedScreen}
-      />
-    </Hawkerfeedstack.Navigator>
-  );
-}
-
-function RecipefeedstackScreen() {
-  const Recipefeedstack = createStackNavigator();
-  return (
-    <Recipefeedstack.Navigator
-      screenOptions={{
-        headerShown: false
-      }}>
-      <Recipefeedstack.Screen
-        name="Recipefeed"
-        component={RecipefeedScreen}
-        options={{
-          headerTitle: "Recipefeed",
-          headerTitleStyle: styles.headerTitleStyle,
-          headerStyle: styles.headerStyle,
-        }}
-      />
-    </Recipefeedstack.Navigator>
-  );
-}
 
 const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator mode="modal" headerMode="none">
-        <Stack.Screen name="Recipefeedstack" component={RecipefeedstackScreen} />
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen
+          name="Recipefeed"
+          component={RecipefeedScreen} />
 
         <Stack.Screen
           name="Recipe"
-          component={RecipeScreen}
-          options={{
-            headerTitle: "Recipe",
-            headerTitleStyle: styles.headerTitleStyle,
-            headerStyle: styles.headerStyle,
-          }} />
+          component={RecipeScreen} />
 
-        <Stack.Screen name="Hawkerfeedstack" component={HawkerfeedstackScreen} />
         <Stack.Screen
           name="Hawkerfeed"
-          component={HawkerfeedScreen}
-          options={{
-            headerTitle: "Hawkerfeed",
-            headerTitleStyle: styles.headerTitleStyle,
-            headerStyle: styles.headerStyle,
-          }}
-        />
+          component={HawkerfeedScreen} />
+
+        <Stack.Screen
+          name="Hawker"
+          component={HawkerScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -183,7 +157,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: 60,
     width: 60,
-    position: 'absolute',
-    top: 100
   }
 });
